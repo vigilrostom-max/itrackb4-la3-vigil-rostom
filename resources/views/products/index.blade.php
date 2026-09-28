@@ -21,5 +21,6 @@
         </tr>
         @endforeach
     </table>
+    <p><a href="{{ route('products.featured') }}">See the featured product</a></p>
 </body>
 </html>

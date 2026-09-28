@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 class ProductController extends Controller
 {
-    // PART A: the data lives here now, in ONE private helper.
-    // Every method below asks this helper for the products.
-    // The key (1, 2, 3...) matches each product's id, so one product
-    // can be found with a single lookup instead of a loop.
     private function getProducts()
     {
         return [
@@ -22,7 +18,7 @@ class ProductController extends Controller
         ];
     }
 
-    // The list page. Same as LA2, but the data now comes from the helper.
+    // Show the product list.
     public function index()
     {
         $products = $this->getProducts();
@@ -34,7 +30,6 @@ class ProductController extends Controller
     {
         $products = $this->getProducts();
 
-        // Is there a product with this id? If not, stop and show a proper 404 page.
         if (!isset($products[$id])) {
             abort(404);
         }
@@ -42,6 +37,16 @@ class ProductController extends Controller
         return view('products.show', [
             'product' => $products[$id],
             'heading' => 'Product Details',
+        ]);
+    }
+
+    public function featured()
+    {
+        $products = $this->getProducts();
+
+        return view('products.show', [
+            'product' => $products[5],
+            'heading' => 'Featured Product',
         ]);
     }
 }

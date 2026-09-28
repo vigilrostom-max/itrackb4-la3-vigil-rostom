@@ -13,4 +13,6 @@ Route::get('/whoami', function () {
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
+Route::get('/products/featured', [ProductController::class, 'featured'])->name('products.featured');
+
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
