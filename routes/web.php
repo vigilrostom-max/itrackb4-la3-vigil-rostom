@@ -15,4 +15,6 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 Route::get('/products/featured', [ProductController::class, 'featured'])->name('products.featured');
 
+Route::get('/products/filter/{category?}', [ProductController::class, 'filter'])->name('products.filter');
+
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');

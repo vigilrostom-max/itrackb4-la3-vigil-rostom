@@ -49,4 +49,21 @@ class ProductController extends Controller
             'heading' => 'Featured Product',
         ]);
     }
+    public function filter($category = null)
+    {
+        $products = $this->getProducts();
+        $matches = [];
+
+        foreach ($products as $product) {
+            // No category typed? Keep every product. Otherwise keep only the matching ones.
+            if ($category === null || strtolower($product['category']) === strtolower($category)) {
+                $matches[] = $product;
+            }
+        }
+
+        return view('products.filter', [
+            'products' => $matches,
+            'category' => $category,
+        ]);
+    }
 }
