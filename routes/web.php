@@ -11,4 +11,4 @@ Route::get('/whoami', function () {
     return 'Your Name | Block 4A | ITRACKB4 Laravel 12';
 });
 
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
