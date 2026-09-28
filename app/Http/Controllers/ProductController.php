@@ -29,4 +29,19 @@ class ProductController extends Controller
 
         return view('products.index', ['products' => $products]);
     }
+
+    public function show($id)
+    {
+        $products = $this->getProducts();
+
+        // Is there a product with this id? If not, stop and show a proper 404 page.
+        if (!isset($products[$id])) {
+            abort(404);
+        }
+
+        return view('products.show', [
+            'product' => $products[$id],
+            'heading' => 'Product Details',
+        ]);
+    }
 }
